@@ -117,7 +117,7 @@ class FinanceNet:
         plt.title("German Mark/USD Exchange Rate vs Time")
         plt.legend(loc="lower right")"""
         
-        #print("NMSE: %s" % self.calc_NMSE(y, y2))
+        print("NMSE: %s" % self.calc_NMSE(y, y2))
     
         #show plot
         #plt.show()
@@ -126,8 +126,8 @@ class FinanceNet:
 
     def load_data(self):
         alldata = self.make_dataset(self.parse_data("dat96_ge.txt"))
-        #tstdata, trndata = alldata.splitWithProportion( 0.25 )
-        trndata, tstdata = alldata.splitWithProportion( 0.75 )
+        tstdata, trndata = alldata.splitWithProportion( 0.25 )
+        #trndata, tstdata = alldata.splitWithProportion( 0.75 )
         tst_len = int(len(alldata)*0.25)
     
         return (alldata, tstdata, trndata)
