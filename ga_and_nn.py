@@ -1,3 +1,4 @@
+from __future__ import division
 from pyevolve import G1DList
 from pyevolve import GSimpleGA
 from pyevolve import GAllele
@@ -96,7 +97,8 @@ class FinanceNet:
     
     def test(self, t, net):
         t.testOnData(self.tstdata, verbose = False)
-        d2 = self.make_dataset(self.parse_data("dat96_ge.txt", begin=2000-self.days, end=2000))
+        #d2 = self.make_dataset(self.parse_data("dat96_ge.txt", begin=2000-self.days, end=2000))
+        d2 = self.tstdata
         arr = [net.activate(x) for x, _ in d2]
     
         #Now to plot the data
@@ -124,7 +126,8 @@ class FinanceNet:
 
     def load_data(self):
         alldata = self.make_dataset(self.parse_data("dat96_ge.txt"))
-        tstdata, trndata = alldata.splitWithProportion( 0.25 )
+        #tstdata, trndata = alldata.splitWithProportion( 0.25 )
+        trndata, tstdata = alldata.splitWithProportion( 0.75 )
         tst_len = int(len(alldata)*0.25)
     
         return (alldata, tstdata, trndata)
@@ -138,6 +141,22 @@ class FinanceNet:
                 return t/len(actual)
             except ZeroDivisionError:
                 return 1000 #arbitrary big number
+        else:
+            print("Actual and predicted arrays must have the same length")
+            return -1.0
+            
+    def calc_up_down_acc(self, actual, predicted):
+        t = 0
+        if(len(actual) == len(predicted)):
+            for i in range(0, len(actual)-1):
+                delta_act = actual[i+1] - actual[i]
+                delta_pre = predicted[i+1] - predicted[i]
+                if delta_act/abs(delta_act) == delta_pre/abs(delta_pre):
+                    t += 1
+            try:
+                return t/(len(actual)-1)*100
+            except ZeroDivisionError:
+                return 0 #just 0 bruh
         else:
             print("Actual and predicted arrays must have the same length")
             return -1.0
