@@ -1,0 +1,84 @@
+- GenomeBase
+	Score:			 0.212994
+	Fitness:		 0.195515
+
+	Params:		 {'allele': - GAlleles
+	Homogeneous:	 False
+	List size:	 6
+	Alleles:
+
+Allele for 0 position:
+- GAlleleRange
+	Real:		 False
+	Ranges Count:	 1
+	Range List:
+			 Range from [1] to [1000]
+
+Allele for 1 position:
+- GAlleleRange
+	Real:		 False
+	Ranges Count:	 1
+	Range List:
+			 Range from [1] to [20]
+
+Allele for 2 position:
+- GAlleleRange
+	Real:		 False
+	Ranges Count:	 1
+	Range List:
+			 Range from [1] to [10]
+
+Allele for 3 position:
+- GAlleleList
+	List size:	 2
+	Allele Options:	 [True, False]
+
+Allele for 4 position:
+- GAlleleList
+	List size:	 10
+	Allele Options:	 [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
+Allele for 5 position:
+- GAlleleList
+	List size:	 2
+	Allele Options:	 [<class 'pybrain.structure.modules.tanhlayer.TanhLayer'>, <class 'pybrain.structure.modules.sigmoidlayer.SigmoidLayer'>]
+
+, 'fast': False}
+
+	Slot [Evaluator] (Count: 1)
+		Name: eval_func - Weight: 0.50
+		Doc: Calculate score of chromosome.
+	Slot [Initializator] (Count: 1)
+		Name: G1DListInitializatorAllele - Weight: 0.50
+		Doc:  Allele initialization function of G1DList
+
+   To use this initializator, you must specify the *allele* genome parameter with the
+   :class:`GAllele.GAlleles` instance.
+
+   
+	Slot [Mutator] (Count: 1)
+		Name: G1DListMutatorAllele - Weight: 0.50
+		Doc:  The mutator of G1DList, Allele Mutator
+
+   To use this mutator, you must specify the *allele* genome parameter with the
+   :class:`GAllele.GAlleles` instance.
+
+   
+	Slot [Crossover] (Count: 1)
+		Name: G1DListCrossoverSinglePoint - Weight: 0.50
+		Doc:  The crossover of G1DList, Single Point
+
+   .. warning:: You can't use this crossover method for lists with just one element.
+
+   
+
+- G1DList
+	List size:	 6
+	List:		 [318, 16, 7, True, 0.1, <class 'pybrain.structure.modules.sigmoidlayer.SigmoidLayer'>]
+
+
+[318, 16, 7, True, 0.1, <class 'pybrain.structure.modules.sigmoidlayer.SigmoidLayer'>]
+NMSE: [ 6.60034793]
+ga_and_nn.py:143: RuntimeWarning: invalid value encountered in double_scalars
+  if delta_act/abs(delta_act) == delta_pre/abs(delta_pre):
+Up/DownL 41.5254237288
